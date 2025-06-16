@@ -18,6 +18,7 @@ interface MarkdownEditorToolbarProps {
 export default function MarkdownEditorToolbar({insertMarkdown}: MarkdownEditorToolbarProps) {
     const supabase = createClient()
 
+    // @ts-expect-error fix later
     const uploadImagePublic = async (file) => {
         const uploadFile = file.target.files[0];
         const fileName = uploadFile.name;

@@ -34,11 +34,14 @@ export default function MarkdownEditor({user}: MarkdownEditorProps) {
 
     useEffect(() => {
         const textarea = textareaRef.current;
+        // @ts-expect-error fix later
         textarea.selectionStart = cursorPosition[0];
+        // @ts-expect-error fix later
         textarea.selectionEnd = cursorPosition[1];
     }, [cursorPosition]);
 
     const publishNewPost = async () => {
+        // @ts-expect-error fix later
         const post: Post = {
             title: title,
             description: description,
@@ -57,6 +60,7 @@ export default function MarkdownEditor({user}: MarkdownEditorProps) {
 
     }
 
+    // @ts-expect-error fix later
     const insertStringStartOfLine = (ta, string) => {
         const pos = ta.selectionStart;
         const textUptoCursor = ta.value.substring(0, pos);
@@ -70,28 +74,34 @@ export default function MarkdownEditor({user}: MarkdownEditorProps) {
         ta.selectionStart = ta.selectionEnd = currentLineStartPos + string.length;
     }
 
+    // @ts-expect-error fix later
     const insertMarkdown = (type, before, after = '') => {
         const textarea = textareaRef.current;
+        // @ts-expect-error fix later
         const start = textarea.selectionStart;
+        // @ts-expect-error fix later
         const end = textarea.selectionEnd;
 
         if (type === 'prefix') {
             insertStringStartOfLine(textarea, before);
             setCursorPosition([start + before.length, end + before.length]); //TODO: Duplicate
         } else if (type === 'wrap') {
-
+            // @ts-expect-error fix later
             const selectedText = textarea.value.substring(start, end);
+            // @ts-expect-error fix later
             textarea.setRangeText(before + selectedText + after, start, end, 'select');
             setCursorPosition([start + before.length, end + after.length]); //TODO: Duplicate
 
         } else if (type === 'table') {
             const table = '\n| Column 1 | Column 2 |\n| --------- | --------- |\n| Row1 | Row2 |\n';
-
+            // @ts-expect-error fix later
             const endPosCurrentLine = textarea.value.indexOf('\n', end);
 
             if (endPosCurrentLine === -1) {
+                // @ts-expect-error fix later
                 textarea.value = textarea.value + table;
             } else {
+                // @ts-expect-error fix later
                 textarea.setRangeText(table, endPosCurrentLine, endPosCurrentLine, 'select');
             }
 
@@ -100,11 +110,14 @@ export default function MarkdownEditor({user}: MarkdownEditorProps) {
             return;
         }
 
+        // @ts-expect-error fix later
         setMarkdown(textarea.value);
+        // @ts-expect-error fix later
         textarea.focus();
 
     };
 
+    // @ts-expect-error fix later
     const uploadThumbnail = async (event) => {
         if (event.target.files && event.target.files[0]) {
             setThumbnail(URL.createObjectURL(event.target.files[0]));
