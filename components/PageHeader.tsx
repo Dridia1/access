@@ -1,7 +1,3 @@
-import {createClient} from "@/utils/supabase/server";
-import {Plus} from "lucide-react";
-import Link from "next/link";
-
 export interface PageHeaderProps {
     title: string
     children?: React.ReactNode

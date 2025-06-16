@@ -3,7 +3,6 @@ import {createClient} from "@/utils/supabase/server";
 import PostCard from "@/components/PostCard";
 import {Plus} from "lucide-react";
 import {getUser} from "@/utils/supabase/queries";
-import {redirect} from "next/navigation";
 import Link from "next/link";
 
 export default async function PostsScreen() {
@@ -11,8 +10,8 @@ export default async function PostsScreen() {
 
     const user = await getUser(supabase);
 
-    const { data, error } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
-    const {data: userProfile, error: userProfileError} = await supabase.from('profiles').select(`*`).eq('id', user?.id).single()
+    const { data } = await supabase.from('posts').select('*').order('created_at', { ascending: false });
+    const {data: userProfile} = await supabase.from('profiles').select(`*`).eq('id', user?.id).single()
 
     const renderPosts = data?.map((post) =>
         <PostCard key={post.id} post={post} />

@@ -32,7 +32,7 @@ export default function AccountForm({user}: { user: User | null }) {
                 setUsername(data.username)
             }
         } catch (error) {
-            alert('Error loading user data!')
+            alert('Error loading user data!' + error)
         } finally {
             setLoading(false)
         }
@@ -60,7 +60,7 @@ export default function AccountForm({user}: { user: User | null }) {
             if (error) throw error
             alert('Profile updated!')
         } catch (error) {
-            alert('Error updating the data!')
+            alert('Error updating the data!' + error)
         } finally {
             setLoading(false)
         }
@@ -70,6 +70,7 @@ export default function AccountForm({user}: { user: User | null }) {
         <div className="flex gap-4 p-10">
             <div className={"hidden md:block"}>
                 <ul className="menu bg-base-200 rounded-box w-56">
+                    {loading && (<p>loading...</p>)}
                     <li>
                         <a href={"#email"}>
                             Email

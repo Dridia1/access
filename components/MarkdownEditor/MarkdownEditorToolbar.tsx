@@ -8,10 +8,8 @@ import {
     List, MessageSquareQuote,
     Quote,
     Strikethrough,
-    Table
 } from "lucide-react";
 import {createClient} from "@/utils/supabase/client";
-import {useState} from "react";
 
 interface MarkdownEditorToolbarProps {
     insertMarkdown: (type: 'prefix' | 'wrap' | 'table', start: string, end?: string) => void;
@@ -35,8 +33,8 @@ export default function MarkdownEditorToolbar({insertMarkdown}: MarkdownEditorTo
             console.error("Error uploading file:", error);
             return;
         } else {
-            const resp = await fetch("/api/media/" + data?.fullPath)
-            const blob = await resp.blob();
+            // const resp = await fetch("/api/media/" + data?.fullPath)
+            // const blob = await resp.blob();
 
             insertMarkdown('wrap', `![${fileName}](/api/media/${data?.fullPath})`, '');
         }

@@ -4,6 +4,8 @@ import {NextRequest} from "next/server";
 export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
     const supabase = await createClient()
 
+    console.log(req);
+
     const {
         data: { session },
     } = await supabase.auth.getSession()
