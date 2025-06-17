@@ -19,7 +19,11 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ pat
         },
     })
 
+    console.log("[FETCH] fetching image: ", res)
+
     const blob = await res.blob()
+
+    console.log("[RESPONSE] fetching image: ", res)
 
     return new Response(blob, {
         headers: {

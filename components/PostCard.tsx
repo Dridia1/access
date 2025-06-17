@@ -20,6 +20,7 @@ export default async function PostCard({post}: PostCardProps) {
                         alt="Shoes"
                         height={1280}
                         width={720}
+                        unoptimized
                         />
                 </figure>
                 <div className="card-body">
