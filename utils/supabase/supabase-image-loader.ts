@@ -1,5 +1,3 @@
-const projectId = 'kiuwhqudmnaxsolairom' // your supabase project id
-
 interface SupabaseImage{
     src: string;
     width: number;
