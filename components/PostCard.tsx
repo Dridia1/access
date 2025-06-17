@@ -17,10 +17,9 @@ export default async function PostCard({post}: PostCardProps) {
                     {/*<img className="aspect-16/9" height={200} src={post.thumbnail || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"} alt="Post Thumbnail"/>*/}
                     <Image
                         src={post.thumbnail || "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"}
-                        alt="Shoes"
+                        alt="Post Thumbnail"
                         height={1280}
                         width={720}
-                        unoptimized
                         />
                 </figure>
                 <div className="card-body">
